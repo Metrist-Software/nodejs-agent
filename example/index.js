@@ -42,7 +42,7 @@ function runRquest() {
 }
 
 runGet();
-runGet();
+runRquest();
 
 
 setTimeout(() => agent.disconnect(), 1000);

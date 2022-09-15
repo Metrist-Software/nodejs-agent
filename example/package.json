@@ -10,6 +10,6 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@metrist/metrist-agent": "^0.0.1"
+    "@metrist/metrist-agent": "^0.0.2"
   }
 }
