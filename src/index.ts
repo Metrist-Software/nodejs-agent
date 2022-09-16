@@ -27,8 +27,7 @@ export class MetristAgent {
   constructor(param: AgentParams);
   constructor(param?: AgentParams) {
     this._host = param?.host ?? process.env.METRIST_MONITORING_AGENT_HOST ?? '127.0.0.1';
-    // @ts-ignore
-    this._port = param?.port ?? (+process.env.METRIST_MONITORING_AGENT_PORT || 51712);
+    this._port = param?.port ?? parseInt(process.env.METRIST_MONITORING_AGENT_PORT ?? '51712', 10);
     this._sendTelemetryFunction = param?.sendTelemetryFunction ?? this.sendTelemetry;
   }
 
