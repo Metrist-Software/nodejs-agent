@@ -31,7 +31,7 @@ export class MetristAgent {
     this._sendTelemetryFunction = param?.sendTelemetryFunction ?? this.sendTelemetry;
   }
 
-  connect() { 
+  connect() {
     this._socket = createSocket('udp4');
 
     const httpModule = require('http');
@@ -49,9 +49,9 @@ export class MetristAgent {
 
   private patchHTTPMethod(module: any, method: string) {
     const httpMethod = module[method];
-    const start = performance.now();
     const agent = this;
     return function(...args: RequestMethodArgs) {
+      const start = performance.now();
       return httpMethod.apply(module, args).once('response', function(this: http.ClientRequest, _res: http.IncomingMessage) {
         const end = performance.now();
         const message = Buffer.from(`0\t${this.method}\t${this.host}\t${this.path}\t${Math.trunc(end - start)}\n`);
